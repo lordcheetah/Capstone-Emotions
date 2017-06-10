@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capstone-Emotions", "Assembly-CSharp-firstpass.csproj", "{2E919A58-D4BB-0264-92A9-634BD353DDC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capstone-Emotions", "Assembly-CSharp.csproj", "{842467EC-D08E-2DEA-FC92-12344A62AEEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capstone-Emotions", "Assembly-CSharp-Editor.csproj", "{330095FD-1C06-D45A-E616-6E55BA401527}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E919A58-D4BB-0264-92A9-634BD353DDC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E919A58-D4BB-0264-92A9-634BD353DDC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E919A58-D4BB-0264-92A9-634BD353DDC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E919A58-D4BB-0264-92A9-634BD353DDC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{842467EC-D08E-2DEA-FC92-12344A62AEEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{842467EC-D08E-2DEA-FC92-12344A62AEEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{842467EC-D08E-2DEA-FC92-12344A62AEEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{842467EC-D08E-2DEA-FC92-12344A62AEEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{330095FD-1C06-D45A-E616-6E55BA401527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{330095FD-1C06-D45A-E616-6E55BA401527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{330095FD-1C06-D45A-E616-6E55BA401527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{330095FD-1C06-D45A-E616-6E55BA401527}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
