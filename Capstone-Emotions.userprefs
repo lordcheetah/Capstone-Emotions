@@ -1,8 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SocialAchievements.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CutSceneManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\SocialAchievements.cs" Line="30" Column="36" />
+      <File FileName="Assets\Scripts\SocialAchievements.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SphereTalk.cs" Line="40" Column="9" />
+      <File FileName="Assets\CutSceneManager.cs" Line="56" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
