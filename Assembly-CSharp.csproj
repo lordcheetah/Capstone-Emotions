@@ -46,7 +46,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CutSceneManager.cs" />
      <Compile Include="Assets\GoogleVR\DemoScenes\ControllerDemo\ControllerDebugInfo.cs" />
      <Compile Include="Assets\GoogleVR\DemoScenes\ControllerDemo\ControllerDemoManager.cs" />
      <Compile Include="Assets\GoogleVR\DemoScenes\HeadsetDemo\Teleport.cs" />
@@ -92,6 +91,8 @@
      <Compile Include="Assets\GoogleVR\Scripts\UI\IGvrGazeResponder.cs" />
      <Compile Include="Assets\GoogleVR\Scripts\Utilities\GvrFPS.cs" />
      <Compile Include="Assets\GoogleVR\Scripts\Utilities\GvrIntent.cs" />
+     <Compile Include="Assets\Scripts\CapsuleTalk.cs" />
+     <Compile Include="Assets\Scripts\CutSceneManager.cs" />
      <Compile Include="Assets\Scripts\SocialAchievements.cs" />
      <Compile Include="Assets\Scripts\SphereTalk.cs" />
      <None Include="Assets\GoogleVR\Distortion\GvrDistortion.cginc" />
