@@ -17,7 +17,12 @@ public class CutSceneManager : MonoBehaviour {
 	private bool whichSphereTalking = false;
 	private bool SpheresTalking = false;
 
-	private float walkTime = 31f;
+	private float walkTime = 33f;
+
+	private bool bFear = false;
+	private float waitTime = .5f;
+
+	public bool enableChoice = false;
 
 	void Update()
 	{
@@ -32,43 +37,47 @@ public class CutSceneManager : MonoBehaviour {
 			}
 		} else
 		{
-			if (SpheresTalking)
-			{ // start talking, they're not talking at regular intervals, but it looks more natural, wish I had done that on purpose
-				if (!whichSphereTalking)
-				{ // LittleSphereOne talking
+			if (SpheresTalking) { // start talking, they're not talking at regular intervals, but it looks more natural, wish I had done that on purpose
+				if (!whichSphereTalking) { // LittleSphereOne talking
 					talkTime -= Time.deltaTime;
-					if (talkTime <= 0)
-					{
-						Debug.Log ("One Stop Talking");
+					if (talkTime <= 0) {
+						//Debug.Log ("One Stop Talking");
 						sceneCharacters [0].GetComponent<SphereTalk> ().StopTalking ();
 						whichSphereTalking = !whichSphereTalking;
 						talkTime = standTalkTime;
-						Debug.Log ("Two Start Talking");
+						//Debug.Log ("Two Start Talking");
 						sceneCharacters [1].GetComponent<SphereTalk> ().Talk ();
 					}
-				} else
-				{ // LittleSphereTwo talking
+				} else { // LittleSphereTwo talking
 					talkTime -= Time.deltaTime;
-					if (talkTime <= 0)
-					{
-						Debug.Log ("Two Stop Talking");
+					if (talkTime <= 0) {
+						//Debug.Log ("Two Stop Talking");
 						sceneCharacters [1].GetComponent<SphereTalk> ().StopTalking ();
 						whichSphereTalking = !whichSphereTalking;
 						talkTime = standTalkTime;
-						Debug.Log ("One Start Talking");
+						//Debug.Log ("One Start Talking");
 						sceneCharacters [0].GetComponent<SphereTalk> ().Talk ();
 					}
 				}
 				walkTime -= Time.deltaTime;
-				if (walkTime <= 0)
-				{
+				if (walkTime <= 0) {
 					SpheresTalking = false;
 					sceneCharacters [0].GetComponent<SphereTalk> ().StopTalking ();
 					sceneCharacters [1].GetComponent<SphereTalk> ().StopTalking ();
 					sceneCharacters [2].GetComponent<CapsuleTalk> ().Neutral_Angry ();
-					sceneCharacters [0].GetComponent<SphereTalk> ().Neutral_Fear ();
-					sceneCharacters [1].GetComponent<SphereTalk> ().Neutral_Fear ();
+					bFear = true;
 				}
+			} else
+			{
+				if (bFear) {
+					waitTime -= Time.deltaTime;
+					if (waitTime <= 0) {
+						sceneCharacters [0].GetComponent<SphereTalk> ().Neutral_Fear ();
+						sceneCharacters [1].GetComponent<SphereTalk> ().Neutral_Fear ();
+						bFear = false;
+						enableChoice = true;
+					}
+				} 
 			}
 		}
 	}

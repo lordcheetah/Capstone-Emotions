@@ -5,19 +5,23 @@ using UnityEngine;
 public class SphereTalk : MonoBehaviour
 {
 	private Animator anim;
+	private GvrAudioSource audio;
 
 	void Start()
 	{
 		anim = this.GetComponent<Animator> ();
+		audio = this.GetComponent<GvrAudioSource> ();
 	}
 
 	public void Talk()
 	{
 		anim.SetTrigger ("Talk");
+		audio.Play ();
 	}
 
 	public void StopTalking()
 	{
+		audio.Stop ();
 		anim.SetTrigger ("StopTalking");
 	}
 

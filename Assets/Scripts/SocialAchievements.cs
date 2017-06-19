@@ -5,7 +5,7 @@ using System.Collections;
 public class SocialAchievements : MonoBehaviour {
 	public Canvas canvas;
 	public Text text;
-
+	public CutSceneManager csm;
 	private bool helpAchievement = false;
 	private bool scaredAchievement = false;
 	private bool mehAchievement = false;
@@ -16,6 +16,8 @@ public class SocialAchievements : MonoBehaviour {
 
 	public void UnlockHelpAchievement()
 	{
+		if (!csm.enableChoice)
+			return;
 		StartCoroutine (HelpAchievement());
 	}
 
@@ -35,6 +37,8 @@ public class SocialAchievements : MonoBehaviour {
 
 	public void UnlockScaredAchievement()
 	{
+		if (!csm.enableChoice)
+			return;
 		StartCoroutine (ScaredAchievement());
 	}
 
@@ -54,6 +58,8 @@ public class SocialAchievements : MonoBehaviour {
 
 	public void UnlockMehAchievement()
 	{
+		if (!csm.enableChoice)
+			return;
 		StartCoroutine (MehAchievement());
 	}
 
