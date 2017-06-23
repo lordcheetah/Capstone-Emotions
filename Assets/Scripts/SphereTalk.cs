@@ -7,6 +7,8 @@ public class SphereTalk : MonoBehaviour
 	private Animator anim;
 	private GvrAudioSource audio;
 
+	public AudioClip[] audioClips;
+
 	void Start()
 	{
 		anim = this.GetComponent<Animator> ();
@@ -16,6 +18,7 @@ public class SphereTalk : MonoBehaviour
 	public void Talk()
 	{
 		anim.SetTrigger ("Talk");
+		audio.clip = audioClips [0];
 		audio.Play ();
 	}
 
@@ -39,11 +42,15 @@ public class SphereTalk : MonoBehaviour
 	{
 		anim.SetTrigger ("Neutral_Fear");
 		anim.SetTrigger ("Shake");
+
+		audio.clip = audioClips [1];
+		audio.Play ();
 	}
 
 	public void Fear_Neutral()
 	{
 		anim.SetTrigger ("Fear_Neutral");
 		anim.SetTrigger ("StopShaking");
+		anim.SetTrigger ("StopTalking");
 	}
 }
