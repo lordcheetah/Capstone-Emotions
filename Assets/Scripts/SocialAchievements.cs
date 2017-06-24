@@ -16,7 +16,7 @@ public class SocialAchievements : MonoBehaviour {
 
 	public void UnlockHelpAchievement()
 	{
-		if (!csm.enableChoice)
+		if (!csm.readyChoose)
 			return;
 		StartCoroutine (HelpAchievement());
 	}
@@ -37,7 +37,7 @@ public class SocialAchievements : MonoBehaviour {
 
 	public void UnlockScaredAchievement()
 	{
-		if (!csm.enableChoice)
+		if (!csm.readyChoose)
 			return;
 		StartCoroutine (ScaredAchievement());
 	}
@@ -58,7 +58,7 @@ public class SocialAchievements : MonoBehaviour {
 
 	public void UnlockMehAchievement()
 	{
-		if (!csm.enableChoice)
+		if (!csm.readyChoose)
 			return;
 		StartCoroutine (MehAchievement());
 	}

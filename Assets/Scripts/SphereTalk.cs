@@ -18,8 +18,7 @@ public class SphereTalk : MonoBehaviour
 	public void Talk()
 	{
 		anim.SetTrigger ("Talk");
-		audio.clip = audioClips [0];
-		audio.Play ();
+		TalkSound ();
 	}
 
 	public void StopTalking()
@@ -52,5 +51,22 @@ public class SphereTalk : MonoBehaviour
 		anim.SetTrigger ("Fear_Neutral");
 		anim.SetTrigger ("StopShaking");
 		anim.SetTrigger ("StopTalking");
+	}
+
+	public void TalkSound()
+	{
+		audio.clip = audioClips [0];
+		audio.Play ();
+	}
+
+	public void CrySound()
+	{
+		audio.clip = audioClips [1];
+		audio.Play ();
+	}
+
+	public void CheerSound()
+	{
+		audio.PlayOneShot (audioClips [2]);
 	}
 }

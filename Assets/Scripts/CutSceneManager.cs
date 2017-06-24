@@ -22,7 +22,9 @@ public class CutSceneManager : MonoBehaviour {
 	private bool bFear = false;
 	private float waitTime = .5f;
 
-	public bool enableChoice = false;
+	public bool readyChoose = false;
+
+	private int chosen = 0;
 
 	void Update()
 	{
@@ -60,7 +62,8 @@ public class CutSceneManager : MonoBehaviour {
 					}
 				}
 				walkTime -= Time.deltaTime;
-				if (walkTime <= 0) {
+				if (walkTime <= 0)
+				{
 					SpheresTalking = false;
 					sceneCharacters [0].GetComponent<SphereTalk> ().StopTalking ();
 					sceneCharacters [1].GetComponent<SphereTalk> ().StopTalking ();
@@ -69,16 +72,71 @@ public class CutSceneManager : MonoBehaviour {
 				}
 			} else
 			{
-				if (bFear) {
+				if (bFear)
+				{
 					waitTime -= Time.deltaTime;
 					if (waitTime <= 0) {
 						sceneCharacters [0].GetComponent<SphereTalk> ().Neutral_Fear ();
 						sceneCharacters [1].GetComponent<SphereTalk> ().Neutral_Fear ();
 						bFear = false;
-						enableChoice = true;
+						sceneCharacters [3].SetActive (true);
+						readyChoose = true;
 					}
-				} 
+				} else
+				{
+					switch (chosen)
+					{
+						case 1:
+							break;
+						case 2:
+							break;
+						case 3:
+							break;
+					}
+				}
 			}
 		}
+	}
+
+	public void OnHoverLittleSphere()
+	{ //cheer
+		if (!readyChoose)
+			return;
+		sceneCharacters[0].GetComponent<SphereTalk>().CheerSound();
+	}
+
+	public void OnHoverBigCapsule()
+	{ //muahahaha
+		if (!readyChoose)
+			return;
+		sceneCharacters[2].GetComponent<CapsuleTalk>().MuahaSound();
+	}
+
+	public void OnHoverRunAway()
+	{ // runawayrunway
+		if (!readyChoose)
+			return;
+		sceneCharacters[3].GetComponent<GvrAudioSource>().Play();
+	}
+
+	public void OnClickLittleSphere()
+	{
+		readyChoose = false;
+		chosen = 1;
+		sceneCharacters[0].GetComponent<SphereTalk>().CheerSound();
+	}
+
+	public void OnClickBigCapsule()
+	{
+		readyChoose = false;
+		chosen = 2;
+		sceneCharacters[2].GetComponent<CapsuleTalk>().MuahaSound();
+	}
+
+	public void OnClickRunAway()
+	{
+		readyChoose = false;
+		chosen = 3;
+		sceneCharacters[3].GetComponent<GvrAudioSource>().Play();
 	}
 }

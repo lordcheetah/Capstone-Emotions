@@ -7,6 +7,8 @@ public class CapsuleTalk : MonoBehaviour {
 	private Animator anim;
 	private GvrAudioSource audio;
 
+	public AudioClip[] audioClips;
+
 	void Start()
 	{
 		anim = this.GetComponent<Animator> ();
@@ -21,11 +23,22 @@ public class CapsuleTalk : MonoBehaviour {
 	public void Neutral_Angry()
 	{
 		anim.SetTrigger ("Neutral_Angry");
-		audio.Play ();
+		AngrySound ();
 	}
 
 	public void Angry_Neutral()
 	{
 		anim.SetTrigger ("Angry_Neutral");
+	}
+
+	public void AngrySound()
+	{
+		audio.clip = audioClips [0];
+		audio.Play ();
+	}
+
+	public void MuahaSound()
+	{
+		audio.PlayOneShot (audioClips [1]);
 	}
 }
