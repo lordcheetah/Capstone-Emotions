@@ -6,6 +6,7 @@ public class CutSceneManager : MonoBehaviour {
 	public enum Characters { LittleSphereOne, LittleSphereTwo};
 	public Characters whichChar = Characters.LittleSphereOne;
 	public GameObject[] sceneCharacters;
+	public SocialAchievements sa;
 
 	private const float standTalkTime = 3.0f;
 	private float talkTime = standTalkTime;
@@ -25,6 +26,11 @@ public class CutSceneManager : MonoBehaviour {
 	public bool readyChoose = false;
 
 	private int chosen = 0;
+
+	private float saveWait = 2f;
+	private bool bSaveWait = false;
+	private float saveWait2 = 3f;
+	private bool bSaveWait2 = false;
 
 	void Update()
 	{
@@ -63,7 +69,7 @@ public class CutSceneManager : MonoBehaviour {
 				}
 				walkTime -= Time.deltaTime;
 				if (walkTime <= 0)
-				{
+				{ // Bully
 					SpheresTalking = false;
 					sceneCharacters [0].GetComponent<SphereTalk> ().StopTalking ();
 					sceneCharacters [1].GetComponent<SphereTalk> ().StopTalking ();
@@ -75,22 +81,47 @@ public class CutSceneManager : MonoBehaviour {
 				if (bFear)
 				{
 					waitTime -= Time.deltaTime;
-					if (waitTime <= 0) {
+					if (waitTime <= 0)
+					{ // cry
 						sceneCharacters [0].GetComponent<SphereTalk> ().Neutral_Fear ();
 						sceneCharacters [1].GetComponent<SphereTalk> ().Neutral_Fear ();
 						bFear = false;
 						sceneCharacters [3].SetActive (true);
 						readyChoose = true;
+						bSaveWait = true;
 					}
 				} else
 				{
-					switch (chosen)
+					switch (chosen) // It's the choices we make
 					{
-						case 1:
+						case 1: // Save the spheres
+							if (bSaveWait)
+							{
+								saveWait -= Time.deltaTime;
+								if (saveWait <= 0)
+								{
+									sceneCharacters [0].GetComponent<SphereTalk> ().Neutral_Angry ();
+									sceneCharacters [1].GetComponent<SphereTalk> ().Neutral_Angry ();
+									sceneCharacters [2].GetComponent<CapsuleTalk> ().Neutral_Fear ();
+									sceneCharacters [4].GetComponent<CameraCharacter> ().SaveAnim ();
+									bSaveWait = false;
+									bSaveWait2 = true;
+								}
+							} else if (bSaveWait2)
+							{
+								saveWait2 -= Time.deltaTime;
+								if (saveWait2 <= 0)
+								{
+									sceneCharacters[0].GetComponent<SphereTalk>().CheerSound();
+									//readyChoose = true;
+									sa.UnlockHelpAchievement ();
+									bSaveWait2 = false;
+								}
+							}
 							break;
-						case 2:
+						case 2: // Bully the spheres
 							break;
-						case 3:
+						case 3: // Exit not so gracefully
 							break;
 					}
 				}
@@ -120,21 +151,30 @@ public class CutSceneManager : MonoBehaviour {
 	}
 
 	public void OnClickLittleSphere()
-	{
+	{ //Help the little buggers
+		if (!readyChoose)
+			return;
 		readyChoose = false;
 		chosen = 1;
-		sceneCharacters[0].GetComponent<SphereTalk>().CheerSound();
+		sceneCharacters [0].GetComponent<SphereTalk> ().Fear_Neutral ();
+		sceneCharacters [1].GetComponent<SphereTalk> ().Fear_Neutral ();
+		sceneCharacters [2].GetComponent<CapsuleTalk> ().Angry_Neutral ();
+		sceneCharacters [3].SetActive (false);
 	}
 
 	public void OnClickBigCapsule()
-	{
+	{ // Give in to the Dark Side
+		if (!readyChoose)
+			return;
 		readyChoose = false;
 		chosen = 2;
 		sceneCharacters[2].GetComponent<CapsuleTalk>().MuahaSound();
 	}
 
 	public void OnClickRunAway()
-	{
+	{ // Bravely run away, away
+		if (!readyChoose)
+			return;
 		readyChoose = false;
 		chosen = 3;
 		sceneCharacters[3].GetComponent<GvrAudioSource>().Play();

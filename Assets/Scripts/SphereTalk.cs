@@ -30,6 +30,7 @@ public class SphereTalk : MonoBehaviour
 	public void Neutral_Angry()
 	{
 		anim.SetTrigger ("Neutral_Angry");
+		AngrySound ();
 	}
 
 	public void Angry_Neutral()
@@ -42,8 +43,7 @@ public class SphereTalk : MonoBehaviour
 		anim.SetTrigger ("Neutral_Fear");
 		anim.SetTrigger ("Shake");
 
-		audio.clip = audioClips [1];
-		audio.Play ();
+		CrySound ();
 	}
 
 	public void Fear_Neutral()
@@ -51,6 +51,8 @@ public class SphereTalk : MonoBehaviour
 		anim.SetTrigger ("Fear_Neutral");
 		anim.SetTrigger ("StopShaking");
 		anim.SetTrigger ("StopTalking");
+		audio.Stop ();
+		audio.clip = null;
 	}
 
 	public void TalkSound()
@@ -68,5 +70,12 @@ public class SphereTalk : MonoBehaviour
 	public void CheerSound()
 	{
 		audio.PlayOneShot (audioClips [2]);
+	}
+
+	public void AngrySound()
+	{
+		audio.Stop ();
+		audio.clip = null;
+		audio.PlayOneShot(audioClips [3]);
 	}
 }

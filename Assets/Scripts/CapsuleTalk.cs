@@ -31,6 +31,21 @@ public class CapsuleTalk : MonoBehaviour {
 		anim.SetTrigger ("Angry_Neutral");
 	}
 
+	public void Neutral_Fear()
+	{
+		anim.SetTrigger ("Neutral_Fear");
+		//anim.SetTrigger ("Shake");
+		CrySound ();
+	}
+
+	public void Fear_Neutral()
+	{
+		anim.SetTrigger ("Fear_Neutral");
+		//anim.SetTrigger ("StopShaking");
+		anim.SetTrigger ("StopTalking");
+		audio.Stop ();
+	}
+
 	public void AngrySound()
 	{
 		audio.clip = audioClips [0];
@@ -40,5 +55,11 @@ public class CapsuleTalk : MonoBehaviour {
 	public void MuahaSound()
 	{
 		audio.PlayOneShot (audioClips [1]);
+	}
+
+	public void CrySound()
+	{
+		audio.clip = audioClips [2];
+		audio.Play ();
 	}
 }
