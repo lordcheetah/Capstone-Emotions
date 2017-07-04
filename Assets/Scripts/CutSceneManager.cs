@@ -32,6 +32,9 @@ public class CutSceneManager : MonoBehaviour {
 	private float saveWait2 = 3f;
 	private bool bSaveWait2 = false;
 
+	private float hurtWait = 3f;
+	private bool bHurtWait = false;
+
 	void Update()
 	{
 		// wait to start animation
@@ -120,6 +123,16 @@ public class CutSceneManager : MonoBehaviour {
 							}
 							break;
 						case 2: // Bully the spheres
+							if (bHurtWait)
+							{
+								hurtWait -= Time.deltaTime;
+								if (hurtWait <= 0)
+								{
+									sceneCharacters[2].GetComponent<CapsuleTalk>().MuahaSound();
+									sa.UnlockScaredAchievement ();
+									bHurtWait = false;
+								}
+							}
 							break;
 						case 3: // Exit not so gracefully
 							break;
@@ -168,7 +181,9 @@ public class CutSceneManager : MonoBehaviour {
 			return;
 		readyChoose = false;
 		chosen = 2;
-		sceneCharacters[2].GetComponent<CapsuleTalk>().MuahaSound();
+		sceneCharacters [4].GetComponent<CameraCharacter> ().SaveAnim ();
+		sceneCharacters [3].SetActive (false);
+		bHurtWait = true;
 	}
 
 	public void OnClickRunAway()
@@ -178,5 +193,10 @@ public class CutSceneManager : MonoBehaviour {
 		readyChoose = false;
 		chosen = 3;
 		sceneCharacters[3].GetComponent<GvrAudioSource>().Play();
+	}
+
+	void Reset()
+	{
+
 	}
 }
