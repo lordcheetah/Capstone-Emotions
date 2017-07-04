@@ -143,17 +143,17 @@ public class CutSceneManager : MonoBehaviour {
 	}
 
 	public void OnHoverLittleSphere()
+	{  //muahahaha
+		if (!readyChoose)
+			return;
+		sceneCharacters[2].GetComponent<CapsuleTalk>().MuahaSound();
+	}
+
+	public void OnHoverBigCapsule()
 	{ //cheer
 		if (!readyChoose)
 			return;
 		sceneCharacters[0].GetComponent<SphereTalk>().CheerSound();
-	}
-
-	public void OnHoverBigCapsule()
-	{ //muahahaha
-		if (!readyChoose)
-			return;
-		sceneCharacters[2].GetComponent<CapsuleTalk>().MuahaSound();
 	}
 
 	public void OnHoverRunAway()
@@ -164,6 +164,17 @@ public class CutSceneManager : MonoBehaviour {
 	}
 
 	public void OnClickLittleSphere()
+	{ // Give in to the Dark Side
+		if (!readyChoose)
+			return;
+		readyChoose = false;
+		chosen = 2;
+		sceneCharacters [4].GetComponent<CameraCharacter> ().SaveAnim ();
+		sceneCharacters [3].SetActive (false);
+		bHurtWait = true;
+	}
+
+	public void OnClickBigCapsule()
 	{ //Help the little buggers
 		if (!readyChoose)
 			return;
@@ -173,17 +184,6 @@ public class CutSceneManager : MonoBehaviour {
 		sceneCharacters [1].GetComponent<SphereTalk> ().Fear_Neutral ();
 		sceneCharacters [2].GetComponent<CapsuleTalk> ().Angry_Neutral ();
 		sceneCharacters [3].SetActive (false);
-	}
-
-	public void OnClickBigCapsule()
-	{ // Give in to the Dark Side
-		if (!readyChoose)
-			return;
-		readyChoose = false;
-		chosen = 2;
-		sceneCharacters [4].GetComponent<CameraCharacter> ().SaveAnim ();
-		sceneCharacters [3].SetActive (false);
-		bHurtWait = true;
 	}
 
 	public void OnClickRunAway()

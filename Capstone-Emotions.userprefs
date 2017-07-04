@@ -5,7 +5,7 @@
       <File FileName="Assets\Scripts\SocialAchievements.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\SphereTalk.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CapsuleTalk.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CutSceneManager.cs" Line="186" Column="20" />
+      <File FileName="Assets\Scripts\CutSceneManager.cs" Line="174" Column="20" />
       <File FileName="Assets\Scripts\CameraCharacter.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
