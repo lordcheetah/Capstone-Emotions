@@ -50,9 +50,20 @@ public class SphereTalk : MonoBehaviour
 	{
 		anim.SetTrigger ("Fear_Neutral");
 		anim.SetTrigger ("StopShaking");
-		anim.SetTrigger ("StopTalking");
+		//anim.SetTrigger ("StopTalking");
 		audio.Stop ();
 		audio.clip = null;
+	}
+
+	public void StopShaking()
+	{
+		anim.SetTrigger ("StopShaking");
+	}
+
+
+	public void RunAway()
+	{
+		anim.SetTrigger ("Run");
 	}
 
 	public void TalkSound()

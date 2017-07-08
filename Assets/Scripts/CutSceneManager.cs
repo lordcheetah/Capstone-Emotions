@@ -34,6 +34,9 @@ public class CutSceneManager : MonoBehaviour {
 
 	private float hurtWait = 3f;
 	private bool bHurtWait = false;
+	private float hurtWait2 = 6f;
+	private bool bHurtWait2 = false;
+	private bool bHurtWait3 = true;
 
 	void Update()
 	{
@@ -128,10 +131,21 @@ public class CutSceneManager : MonoBehaviour {
 								hurtWait -= Time.deltaTime;
 								if (hurtWait <= 0)
 								{
-									sceneCharacters[2].GetComponent<CapsuleTalk>().MuahaSound();
-									sa.UnlockScaredAchievement ();
+									sceneCharacters [0].GetComponent<SphereTalk> ().RunAway ();
+									sceneCharacters [1].GetComponent<SphereTalk> ().RunAway ();
 									bHurtWait = false;
+									bHurtWait2 = true;
+								} 
+							}else if (bHurtWait2)
+							{
+								hurtWait2 -= Time.deltaTime;
+								if (hurtWait2 <= 0)
+								{
+									sceneCharacters [2].GetComponent<CapsuleTalk> ().MuahaSound ();
+									sa.UnlockScaredAchievement ();
+									bHurtWait2 = false;
 								}
+
 							}
 							break;
 						case 3: // Exit not so gracefully
@@ -169,6 +183,8 @@ public class CutSceneManager : MonoBehaviour {
 			return;
 		readyChoose = false;
 		chosen = 2;
+		sceneCharacters [0].GetComponent<SphereTalk> ().StopShaking();
+		sceneCharacters [1].GetComponent<SphereTalk> ().StopShaking ();
 		sceneCharacters [4].GetComponent<CameraCharacter> ().SaveAnim ();
 		sceneCharacters [3].SetActive (false);
 		bHurtWait = true;

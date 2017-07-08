@@ -42,7 +42,7 @@ public class CapsuleTalk : MonoBehaviour {
 	{
 		anim.SetTrigger ("Fear_Neutral");
 		//anim.SetTrigger ("StopShaking");
-		anim.SetTrigger ("StopTalking");
+		//anim.SetTrigger ("StopTalking");
 		audio.Stop ();
 	}
 
