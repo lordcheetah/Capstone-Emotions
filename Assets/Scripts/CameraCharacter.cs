@@ -15,4 +15,9 @@ public class CameraCharacter : MonoBehaviour {
 	{
 		anim.SetTrigger ("Save");
 	}
+
+	public void Normal()
+	{
+		anim.SetTrigger ("Normal");
+	}
 }

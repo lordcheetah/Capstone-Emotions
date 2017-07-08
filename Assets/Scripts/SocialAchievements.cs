@@ -6,9 +6,9 @@ public class SocialAchievements : MonoBehaviour {
 	public Canvas canvas;
 	public Text text;
 	public CutSceneManager csm;
-	private bool helpAchievement = false;
-	private bool scaredAchievement = false;
-	private bool mehAchievement = false;
+	private static bool helpAchievement = false;
+	private static bool scaredAchievement = false;
+	private static bool mehAchievement = false;
 
 	void Start () {
 		canvas.gameObject.SetActive(false);
@@ -25,7 +25,10 @@ public class SocialAchievements : MonoBehaviour {
 	{
 		Debug.Log ("Help Ach");
 		if (helpAchievement)
+		{
+			csm.Reset ();
 			yield break;
+		}
 
 		helpAchievement = true;
 
@@ -33,6 +36,7 @@ public class SocialAchievements : MonoBehaviour {
 		canvas.gameObject.SetActive(true);
 		yield return new WaitForSeconds(5);
 		canvas.gameObject.SetActive(false);
+		csm.Reset ();
 	}
 
 	public void UnlockScaredAchievement()
@@ -46,7 +50,10 @@ public class SocialAchievements : MonoBehaviour {
 	{
 		Debug.Log ("Scared Ach");
 		if (scaredAchievement)
+		{
+			csm.Reset ();
 			yield break;
+		}
 
 		scaredAchievement = true;
 
@@ -54,6 +61,7 @@ public class SocialAchievements : MonoBehaviour {
 		canvas.gameObject.SetActive(true);
 		yield return new WaitForSeconds(5);
 		canvas.gameObject.SetActive(false);
+		csm.Reset ();
 	}
 
 	public void UnlockMehAchievement()
@@ -68,7 +76,10 @@ public class SocialAchievements : MonoBehaviour {
 
 		Debug.Log ("Meh Ach");
 		if (mehAchievement)
+		{
+			csm.Reset ();
 			yield break;
+		}
 
 		mehAchievement = true;
 
@@ -76,5 +87,6 @@ public class SocialAchievements : MonoBehaviour {
 		canvas.gameObject.SetActive(true);
 		yield return new WaitForSeconds(5);
 		canvas.gameObject.SetActive(false);
+		csm.Reset ();
 	}
 }

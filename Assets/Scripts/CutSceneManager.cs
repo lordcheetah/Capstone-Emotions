@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CutSceneManager : MonoBehaviour {
 	public enum Characters { LittleSphereOne, LittleSphereTwo};
 	public Characters whichChar = Characters.LittleSphereOne;
 	public GameObject[] sceneCharacters;
 	public SocialAchievements sa;
+
+	private GameObject[] resetSceneObjects;
 
 	private const float standTalkTime = 3.0f;
 	private float talkTime = standTalkTime;
@@ -36,7 +39,6 @@ public class CutSceneManager : MonoBehaviour {
 	private bool bHurtWait = false;
 	private float hurtWait2 = 6f;
 	private bool bHurtWait2 = false;
-	private bool bHurtWait3 = true;
 
 	void Update()
 	{
@@ -141,6 +143,7 @@ public class CutSceneManager : MonoBehaviour {
 								hurtWait2 -= Time.deltaTime;
 								if (hurtWait2 <= 0)
 								{
+									sceneCharacters [4].GetComponent<CameraCharacter> ().Normal ();
 									sceneCharacters [2].GetComponent<CapsuleTalk> ().MuahaSound ();
 									sa.UnlockScaredAchievement ();
 									bHurtWait2 = false;
@@ -211,8 +214,8 @@ public class CutSceneManager : MonoBehaviour {
 		sceneCharacters[3].GetComponent<GvrAudioSource>().Play();
 	}
 
-	void Reset()
+	public void Reset()
 	{
-
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 }
