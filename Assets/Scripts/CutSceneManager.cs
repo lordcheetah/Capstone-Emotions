@@ -40,6 +40,9 @@ public class CutSceneManager : MonoBehaviour {
 	private float hurtWait2 = 6f;
 	private bool bHurtWait2 = false;
 
+	private float runawayWait = 3f;
+	private bool bRunaway = true;
+
 	void Update()
 	{
 		// wait to start animation
@@ -153,6 +156,15 @@ public class CutSceneManager : MonoBehaviour {
 							break;
 						case 3: // Exit not so gracefully
 							sceneCharacters [4].GetComponent<CameraCharacter> ().Move ();
+							if (bRunaway)
+							{
+								runawayWait -= Time.deltaTime;
+								if (runawayWait <= 0)
+								{
+									sa.UnlockMehAchievement ();
+									bRunaway = false;
+								}
+							}
 							break;
 					}
 				}

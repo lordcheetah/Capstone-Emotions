@@ -9,6 +9,7 @@ public class SocialAchievements : MonoBehaviour {
 	private static bool helpAchievement = false;
 	private static bool scaredAchievement = false;
 	private static bool mehAchievement = false;
+	private static bool allEndingsAchievement = false;
 
 	void Start () {
 		canvas.gameObject.SetActive(false);
@@ -16,14 +17,11 @@ public class SocialAchievements : MonoBehaviour {
 
 	public void UnlockHelpAchievement()
 	{
-		/*if (!csm.readyChoose)
-			return;*/
 		StartCoroutine (HelpAchievement());
 	}
 
 	IEnumerator HelpAchievement()
 	{
-		Debug.Log ("Help Ach");
 		if (helpAchievement)
 		{
 			csm.Reset ();
@@ -36,19 +34,16 @@ public class SocialAchievements : MonoBehaviour {
 		canvas.gameObject.SetActive(true);
 		yield return new WaitForSeconds(5);
 		canvas.gameObject.SetActive(false);
-		csm.Reset ();
+		UnlockAllEndingsAchievement ();
 	}
 
 	public void UnlockScaredAchievement()
 	{
-		/*if (!csm.readyChoose)
-			return;*/
 		StartCoroutine (ScaredAchievement());
 	}
 
 	IEnumerator ScaredAchievement()
 	{
-		Debug.Log ("Scared Ach");
 		if (scaredAchievement)
 		{
 			csm.Reset ();
@@ -61,20 +56,16 @@ public class SocialAchievements : MonoBehaviour {
 		canvas.gameObject.SetActive(true);
 		yield return new WaitForSeconds(5);
 		canvas.gameObject.SetActive(false);
-		csm.Reset ();
+		UnlockAllEndingsAchievement ();
 	}
 
 	public void UnlockMehAchievement()
 	{
-		/*if (!csm.readyChoose)
-			return;*/
 		StartCoroutine (MehAchievement());
 	}
 
 	IEnumerator MehAchievement()
 	{
-
-		Debug.Log ("Meh Ach");
 		if (mehAchievement)
 		{
 			csm.Reset ();
@@ -87,6 +78,28 @@ public class SocialAchievements : MonoBehaviour {
 		canvas.gameObject.SetActive(true);
 		yield return new WaitForSeconds(5);
 		canvas.gameObject.SetActive(false);
-		csm.Reset ();
+		UnlockAllEndingsAchievement ();
+	}
+
+	public void UnlockAllEndingsAchievement()
+	{
+		StartCoroutine (AllEndingsAchievement());
+	}
+
+	IEnumerator AllEndingsAchievement()
+	{
+		if(!helpAchievement || !mehAchievement || !scaredAchievement || allEndingsAchievement)
+		{
+			csm.Reset ();
+			yield break;
+		}
+
+		allEndingsAchievement = true;
+
+		text.text = "All Endings Achievement\n\nYou've found all the endings!";
+		canvas.gameObject.SetActive(true);
+		yield return new WaitForSeconds(5);
+		canvas.gameObject.SetActive(false);
+		//csm.Reset ();
 	}
 }
