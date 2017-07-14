@@ -94,6 +94,7 @@
      <Compile Include="Assets\Scripts\CameraCharacter.cs" />
      <Compile Include="Assets\Scripts\CapsuleTalk.cs" />
      <Compile Include="Assets\Scripts\CutSceneManager.cs" />
+     <Compile Include="Assets\Scripts\RunawayMove.cs" />
      <Compile Include="Assets\Scripts\SocialAchievements.cs" />
      <Compile Include="Assets\Scripts\SphereTalk.cs" />
      <None Include="Assets\GoogleVR\Distortion\GvrDistortion.cginc" />

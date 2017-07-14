@@ -152,6 +152,7 @@ public class CutSceneManager : MonoBehaviour {
 							}
 							break;
 						case 3: // Exit not so gracefully
+							sceneCharacters [4].GetComponent<CameraCharacter> ().Move ();
 							break;
 					}
 				}
@@ -177,7 +178,13 @@ public class CutSceneManager : MonoBehaviour {
 	{ // runawayrunway
 		if (!readyChoose)
 			return;
-		sceneCharacters[3].GetComponent<GvrAudioSource>().Play();
+		sceneCharacters [3].GetComponent<RunawayMove> ().Pulse ();
+		sceneCharacters[3].GetComponent<RunawayMove>().RunawaySound();
+	}
+
+	public void OffHoverRunAway()
+	{
+		sceneCharacters [3].GetComponent<RunawayMove> ().StopPulse ();
 	}
 
 	public void OnClickLittleSphere()
@@ -211,7 +218,8 @@ public class CutSceneManager : MonoBehaviour {
 			return;
 		readyChoose = false;
 		chosen = 3;
-		sceneCharacters[3].GetComponent<GvrAudioSource>().Play();
+		sceneCharacters[3].GetComponent<RunawayMove>().RunawaySound();
+		sceneCharacters [3].SetActive (false);
 	}
 
 	public void Reset()
