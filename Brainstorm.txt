@@ -1,0 +1,9 @@
+Capstone Project - Emotions
+
+The user can intervine (or not) between a bully and and his victims.
+Construct everything using simple shapes.
+Sphere shapes for the victims.
+Capsule for the bully.
+Animate the shape's scale on the y-axis to make it look like they're talking.
+Can use Charlie Brown's teacher like sounds as characters talking.
+Achievements for each ending and getting all the endings.
