@@ -1,0 +1,15 @@
+User: Dad
+Mood
+A sad story
+Scale
+Very Good
+Can you see everything comfortably
+Yes
+
+User: Mom
+Mood
+Standing up to a bully.
+Scale
+Realistic except for mountains
+Can you see everything comfortably
+Yes.
