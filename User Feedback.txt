@@ -1,15 +1,31 @@
-User: Dad
-Mood
-A sad story
-Scale
-Very Good
-Can you see everything comfortably
-Yes
+User Test 1:
+What did you think of the experience?
+"Interesting. It was a sad story."
+What did you like about it?
+"I liked having the different options."
+What didn't you like?
+"Looking at the spheres to be a bully to them was confusing."
+How was the scale?
+"It felt about right."
+Can you see everything comfortably?
+"Yes."
+Did the movement feel ok?
+"Yes. I didn't feel motion sickness."
 
-User: Mom
-Mood
-Standing up to a bully.
-Scale
-Realistic except for mountains
-Can you see everything comfortably
-Yes.
+User Test 2:
+What did you think of the experience?
+"I liked it. I enjoyed standing up to the bully."
+What did you like about it?
+"I liked the view. The sounds were interesting. It felt cartoony."
+What didn't you like?
+"I didn't like the other endings, they made me feel bad."
+How was the scale?
+"It felt real."
+Can you see everything comfortably?
+"Yes."
+Did the movement feel ok?
+"It felt ok."
+
+Fixes:
+Switched input so looking at the spheres helps them and looking at the bully helps the bully.
+
